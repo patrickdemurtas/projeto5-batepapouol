@@ -1,0 +1,86 @@
+* {
+box-sizing: border-box;
+font-family: 'Roboto', sans-serif;
+}
+
+
+
+.cabecalho{
+    background-color: white;
+    margin: 0 auto;
+    width: 375px;
+    height: 80px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px 0 #0000000D;
+    position: fixed;
+    top: 0;
+    left: 487px;
+
+}
+
+.cabecalho img{
+    width: 75px;
+    height: 53px;
+    margin-left: 22px;
+}
+
+.iconepessoa{
+    width: 44px;
+    height: 33px;
+    margin-right: 12px;
+}
+
+.separador{
+    margin: 0 auto;
+    background-color: #E5E5E5;
+    width: 375px;
+    height: 26px;
+    margin-top: 80px;
+}
+
+.chat{
+    margin: 0 auto;
+    background-color: white;
+    width: 375px;
+    height: 1200px;
+    margin-top: 80;
+}
+
+
+
+
+
+
+
+
+
+.rodape{
+    margin: 0 auto;
+    width: 375px;
+    height: 80px;
+    box-shadow: 0 -4px 6px 0 #0000000D;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0px;
+    left: 487px;
+}
+
+.iconepaperplane{
+    width: 44px;
+    height: 33px;
+    margin-right: 12px;
+}
+
+.digitarmensagem{
+    border: 0;
+    height: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+}
+
