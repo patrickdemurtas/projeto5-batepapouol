@@ -81,6 +81,12 @@ font-family: 'Roboto', sans-serif;
     height: 30px;
     font-size: 18px;
     font-weight: 400;
+    font-style: normal;
+}
+
+input::placeholder{
+    font-size: 18px;
+    font-weight: 400;
     font-style: italic;
 }
 
