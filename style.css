@@ -3,6 +3,9 @@ box-sizing: border-box;
 font-family: 'Roboto', sans-serif;
 }
 
+span{
+    font-weight: bold;
+}
 
 
 .cabecalho{
@@ -48,10 +51,47 @@ font-family: 'Roboto', sans-serif;
     margin-top: 80;
 }
 
+.mensagem-status{
+    width: 375px;
+    height: 60px;
+    background-color: #DCDCDC;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
 
+}
 
+.mensagem-normal{
+    width: 375px;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
 
+}
 
+.mensagem-reservada{
+    width: 375px;
+    height: 60px;
+    background-color: #FFDEDE;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+
+}
+
+.mensagem-status p{
+    margin-left: 10px;
+}
+
+.mensagem-normal p{
+    margin-left: 10px;
+}
+
+.mensagem-reservada p{
+    margin-left: 10px;
+}
 
 
 
@@ -91,4 +131,6 @@ input::placeholder{
     font-style: italic;
     
 }
+
+
 
