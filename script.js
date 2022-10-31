@@ -32,37 +32,50 @@ perguntarNome();
 
 function manterConexao(){
     const promiseConexao = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeUsuario);
-    console.log(nomeUsuario);
+    
+    promiseConexao.then(verificarConexao);
+}
+function verificarConexao(testeConexao){
+    console.log(testeConexao);
+
 }
 
-/*setInterval(manterConexao, 5000);*/
+setInterval(manterConexao, 5000);
 
 
 
 
 function renderizarMensagens(){
     let mensagemChat = document.querySelector(".chat");
-
+    mensagemChat.innerHTML="";
+    
     for (let i = 0; i < listaMensagens.length; i++){
         let mensagemDaVez = listaMensagens[i];
         
+
         if (mensagemDaVez.type === "status"){
             mensagemChat.innerHTML += ` <li class="mensagem-status">
-            <p>${mensagemDaVez.time}     <span>${mensagemDaVez.from}</span> ${mensagemDaVez.text}...</p>
+            <p>(${mensagemDaVez.time})     <span>${mensagemDaVez.from}</span> ${mensagemDaVez.text}...</p>
         </li>`
+        
+        
         } else if (mensagemDaVez.type === "message"){
             mensagemChat.innerHTML += `<li class="mensagem-normal">
-            <p>${mensagemDaVez.time}     <span>${mensagemDaVez.from}</span> para <span>${mensagemDaVez.to}</span>: ${mensagemDaVez.text}</p>
-        </li>
-`
+            <p>(${mensagemDaVez.time})     <span>${mensagemDaVez.from}</span> para <span>${mensagemDaVez.to}</span>: ${mensagemDaVez.text}</p></li>`
+            
+
         } else if (mensagemDaVez.type === "private_message" && nome === mensagemDaVez.to){
             mensagemChat.innerHTML += ` <li class="mensagem-reservada">
-            <p>${mensagemDaVez.time}      <span>${mensagemDaVez.from}</span> reservadamente para <span>${mensagemDaVez.to}</span>: ${mensagemDaVez.text}</p>
+            <p>(${mensagemDaVez.time})      <span>${mensagemDaVez.from}</span> reservadamente para <span>${mensagemDaVez.to}</span>: ${mensagemDaVez.text}</p>
         </li>  `
+       
         }
+       
+       }
+       
    
     }
-}
+    
 
 
 
@@ -78,3 +91,32 @@ function sucessoBuscar(respostaBuscar){
 }
 
 setInterval(buscarMensagens, 3000);
+
+
+
+
+
+function enviarMensagem(){
+    
+    let mensagemDigitada = document.querySelector(".digitarmensagem").value;
+    let envioMensagem = {from: nome, to: "Todos", text: mensagemDigitada, type: "message"};
+    
+
+    const promiseEnviar = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", envioMensagem);
+    promiseEnviar.then(verificarEnvio);
+    promiseEnviar.catch(erroEnvio)
+      
+    envioMensagem = {};
+
+}
+
+function verificarEnvio(testeEnvio){
+console.log(testeEnvio);
+buscarMensagens();
+
+}
+
+function erroEnvio(erro){
+    window.location.reload();
+}
+
