@@ -1,10 +1,7 @@
 let nomeUsuario = {};
 let nome;
 
-let listaMensagens = [{from: 'João', to: 'todos', text: 'entra na sala...', type: 'status', time: "08:02:50"},
-{from: 'João', to: 'todos', text: 'bom dia', type: 'message', time: "08:02:50"},
-{from: 'João', to: 'patrick', text: 'bom dia', type: 'private_message', time: "08:02:50"}           
-];
+let listaMensagens = [];
 
 
 function perguntarNome(){
@@ -34,7 +31,7 @@ function erroNome(respostaErroNome){
 perguntarNome();
 
 function manterConexao(){
-    const promiseConexao = ("https://mock-api.driven.com.br/api/v6/uol/status", nomeUsuario);
+    const promiseConexao = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", nomeUsuario);
     console.log(nomeUsuario);
 }
 
@@ -67,4 +64,17 @@ function renderizarMensagens(){
     }
 }
 
-renderizarMensagens();
+
+
+
+function buscarMensagens(){
+    const promiseBuscar = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
+    promiseBuscar.then(sucessoBuscar);
+}
+
+function sucessoBuscar(respostaBuscar){
+    listaMensagens = respostaBuscar.data;
+    renderizarMensagens();
+}
+
+setInterval(buscarMensagens, 3000);
